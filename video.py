@@ -1,7 +1,7 @@
 import cv2
 
 cv2.namedWindow("output")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
 if cap.isOpened():              # Getting the first frame
     ret, frame = cap.read()
