@@ -22,8 +22,6 @@ PI = 'raspberry_pi'
 IS_LINUX = (PLATFORM == 'linux')
 
 if IS_LINUX:
-    linux_distro.lower()
-    if PLATFORM == 'debian':
         try:
             with open('/proc/cpuinfo') as f:
                 for line in f:
@@ -35,9 +33,6 @@ if IS_LINUX:
         except:
             print("Unknown platform based on Debian.")
             pass
-    elif PLATFORM == 'mendel':
-        PLATFORM = GOOGLE
-        print("Running on a Coral Dev Board.")
 
 try:
     from edgetpu.detection.engine import DetectionEngine
