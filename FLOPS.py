@@ -1,6 +1,19 @@
 #!/usr/bin/env python3
 
 import platform
+
+using_distro = False
+try:
+    import distro
+    using_distro = True
+except ImportError:
+    pass
+
+if using_distro:
+    linux_distro = distro.like()
+else:
+    linux_distro = platform.linux_distribution()[0]
+
 PLATFORM = platform.system().lower()
 GOOGLE = 'edge_tpu'
 INTEL = 'ncs2'
@@ -9,7 +22,7 @@ PI = 'raspberry_pi'
 IS_LINUX = (PLATFORM == 'linux')
 
 if IS_LINUX:
-    PLATFORM = platform.linux_distribution()[0].lower()
+    linux_distro.lower()
     if PLATFORM == 'debian':
         try:
             with open('/proc/cpuinfo') as f:
